@@ -1,0 +1,273 @@
+/* --- Variables y Reset --- */
+:root {
+    --primary: #1a73e8;
+    --primary-dark: #1557b0;
+    --secondary: #34a853;
+    --danger: #d93025;
+    --gray-light: #f8f9fa;
+    --gray-border: #dadce0;
+    --text-dark: #202124;
+    --shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    background: #f1f3f4; 
+    margin: 0; 
+    color: var(--text-dark);
+}
+
+/* --- Navegación y Menú --- */
+.navbar { 
+    background: var(--primary); 
+    color: white; 
+    padding: 0.8rem 1.2rem; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    box-shadow: var(--shadow);
+}
+
+.tab-menu {
+    display: flex;
+    background: var(--primary);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 15px 5px;
+    font-weight: 600;
+    flex: 1;
+    cursor: pointer;
+    transition: 0.3s;
+    border-bottom: 4px solid transparent;
+}
+
+.tab-btn.active {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 4px solid white;
+}
+
+/* --- Contenedor Principal --- */
+.container { 
+    padding: 1.5rem 1rem; 
+    max-width: 1000px; 
+    margin: auto; 
+}
+
+.admin-section { 
+    background: white; 
+    padding: 1.5rem; 
+    border-radius: 12px; 
+    margin-bottom: 25px; 
+    box-shadow: var(--shadow); 
+}
+
+h2 {
+    color: var(--primary);
+    font-size: 1.4rem;
+    margin-top: 0;
+    border-bottom: 2px solid var(--gray-light);
+    padding-bottom: 10px;
+}
+
+/* --- Formularios e Inputs --- */
+.input-group { margin-bottom: 1.2rem; }
+.input-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #5f6368; }
+
+input { 
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid var(--gray-border); 
+    border-radius: 8px; 
+    box-sizing: border-box;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
+}
+
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+/* --- Botones --- */
+button { 
+    border: none; 
+    border-radius: 8px; 
+    padding: 12px; 
+    cursor: pointer; 
+    font-size: 15px; 
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.btn-primary { background: var(--primary); color: white; width: 100%; }
+.btn-primary:hover { background: var(--primary-dark); }
+
+.btn-secondary { background: var(--secondary); color: white; width: 100%; }
+.btn-secondary:hover { opacity: 0.9; }
+
+#logout-btn { background: var(--danger); color: white; padding: 8px 15px; font-size: 14px; }
+
+/* --- Tablas (Stock y Venta) --- */
+.table-container { 
+    background: white; 
+    border-radius: 12px; 
+    overflow: hidden; 
+    box-shadow: var(--shadow);
+}
+
+table { width: 100%; border-collapse: collapse; }
+th { background: var(--gray-light); color: #5f6368; font-weight: 600; }
+th, td { text-align: left; padding: 15px; border-bottom: 1px solid var(--gray-light); }
+tr:last-child td { border-bottom: none; }
+tr:hover { background: #fdfdfd; }
+
+/* --- SECCIÓN FIADOS (Reestructurado para evitar que se rompa) --- */
+#lista-deudores {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.cliente-deuda-card {
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para apilar elementos */
+    gap: 12px;
+    background: white;
+    padding: 15px;
+    margin-bottom: 5px;
+    border-radius: 12px;
+    border-left: 5px solid var(--primary);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.cliente-info {
+    border-bottom: 1px solid var(--gray-light);
+    padding-bottom: 8px;
+}
+
+.cliente-info strong {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    text-transform: uppercase;
+}
+
+/* Contenedor para que los botones vivan juntos abajo */
+.cliente-acciones {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas iguales para los botones */
+    gap: 10px;
+}
+
+.btn-ver-deuda, .btn-fiado-compra {
+    padding: 10px 5px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    width: 100%; /* Ahora ocupan el 50% cada uno gracias al grid */
+    min-width: unset; /* Quitamos el min-width anterior */
+}
+
+.btn-ver-deuda {
+    background: var(--secondary);
+    color: white;
+}
+
+.btn-fiado-compra {
+    background: var(--primary);
+    color: white;
+}
+
+/* Estilo para que la tabla sea legible */
+#inventory-table {
+    margin-top: 20px;
+    background: white;
+}
+
+#inventory-table th {
+    background-color: #f1f3f4;
+    color: #1a73e8;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+#inventory-table tr {
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#inventory-table tr:hover {
+    background-color: #e8f0fe;
+}
+
+/* Alerta visual si te queda poco stock */
+.stock-bajo {
+    color: #d93025;
+    font-weight: bold;
+    background-color: #fce8e6;
+    text-align: center;
+    border-radius: 4px;
+}
+
+#reader-venta {
+    width: 100% !important;
+    max-width: 400px;
+    margin: 10px auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    position: relative;
+}
+
+/* Línea roja de escaneo estilo láser */
+#reader-venta::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: rgba(255, 0, 0, 0.5);
+    box-shadow: 0 0 8px red;
+    animation: scanline 2s infinite ease-in-out;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@keyframes scanline {
+    0% { top: 20%; }
+    50% { top: 80%; }
+    100% { top: 20%; }
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+    .row { grid-template-columns: 1fr; }
+    th, td { padding: 10px 8px; font-size: 13px; }
+    .cliente-deuda-card { padding: 12px; }
+}
+
+/* Control de Pestañas */
+.tab-content { display: none; animation: fadeIn 0.3s; }
+.tab-content.active { display: block; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
