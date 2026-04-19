@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Crédito - Pulpería Maoshy</title>
+    <link rel="stylesheet" href="../css/credito.css">
+    <script src="https://unpkg.com/@zxing/library@latest"></script>
+</head>
+<body>
+    <header class="cr-header">
+        <button class="cr-back-btn" onclick="window.history.back()">← Volver</button>
+        <h2>Créditos: <span id="user-display"></span></h2>
+        <div id="fecha-actual" style="font-size: 0.9rem; opacity: 0.9;"></div>
+    </header>
+
+    <div class="cr-container">
+        <div class="cr-grid">
+            <div class="cr-card" onclick="abrirModal('modal-compra')">
+                <span class="icon">🛒</span>
+                <h3>Compra de Productos</h3>
+                <p>Escanear código de barra</p>
+            </div>
+
+            <div class="cr-card" onclick="abrirModal('modal-servicios')">
+                <span class="icon">🔌</span>
+                <h3>Servicios Externos</h3>
+                <p>Impresiones, Recargas, etc.</p>
+            </div>
+        </div>
+
+        <div id="modal-compra" class="cr-modal">
+    <div class="cr-modal-content">
+        <span class="cr-close" onclick="cerrarModal('modal-compra')">&times;</span>
+        <h3>🛒 Agregar Productos</h3>
+        
+        <div id="reader-inv" class="cr-scanner-box" style="display: none;"></div>
+        
+        <button id="scan-inv-btn" class="cr-btn btn-blue" style="margin-bottom: 15px;">
+            📸 Escanear Producto
+        </button>
+        
+        <form id="form-compra-inv">
+            <div class="cr-input-group">
+                <label>Código de Barra</label>
+                <input type="text" id="p-barcode" class="cr-input" placeholder="Escanee o digite código">
+            </div>
+            <div class="cr-input-group">
+                <label>Nombre del Producto</label>
+                <input type="text" id="p-nombre" class="cr-input" readonly>
+            </div>
+            <div class="cr-row">
+                <div class="cr-input-group">
+                    <label>Cantidad</label>
+                    <input type="number" id="p-cantidad" class="cr-input" value="1">
+                </div>
+                <div class="cr-input-group">
+                    <label>Precio (C$)</label>
+                    <input type="number" id="p-precio" class="cr-input" readonly>
+                </div>
+            </div>
+            <button type="submit" class="cr-btn btn-green">➕ Registrar Producto</button>
+        </form>
+    </div>
+</div>
+
+        <div id="modal-servicios" class="cr-modal">
+            <div class="cr-modal-content">
+                <span class="cr-close" onclick="cerrarModal('modal-servicios')">&times;</span>
+                <h3>🔌 Servicios Externos</h3>
+                
+                <form id="form-servicios-ext">
+                    <div class="cr-input-group">
+                        <label>Producto/Servicio</label>
+                        <input type="text" class="cr-input" placeholder="Ej: Impresión a color, Recarga Tigo" required>
+                    </div>
+                    <div class="cr-row">
+                        <div class="cr-input-group">
+                            <label>Cantidad</label>
+                            <input type="number" class="cr-input" value="1" required>
+                        </div>
+                        <div class="cr-input-group">
+                            <label>Precio Total (C$)</label>
+                            <input type="number" class="cr-input" placeholder="0.00" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="cr-btn btn-blue">💾 Guardar Servicio</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/html5-qrcode"></script>
+    <script src="../java/credito.js"></script>
+</body>
+</html>
