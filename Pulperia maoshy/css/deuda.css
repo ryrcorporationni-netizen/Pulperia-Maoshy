@@ -1,0 +1,127 @@
+:root {
+    --primary: #1e3a8a;
+    --accent: #3b82f6;
+    --success: #059669;
+    --danger: #dc2626;
+    --bg: #f3f4f6;
+    --panel-bg: #ffffff;
+    --text: #1f2937;
+    --text-muted: #6b7280;
+    --radius: 12px;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* Header Estilo App */
+.main-header {
+    background: var(--primary);
+    color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow);
+}
+
+.main-header h1 { font-size: 1.2rem; margin: 0; font-weight: 700; }
+.btn-icon-back { background: transparent; border: none; color: white; cursor: pointer; padding: 5px; }
+.brand-logo { font-weight: 900; background: white; color: var(--primary); padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; }
+
+/* Contenedor principal */
+.dashboard-container {
+    max-width: 1000px;
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Paneles */
+.panel {
+    background: var(--panel-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+}
+
+/* Panel de Usuario */
+.info-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    border-left: 6px solid var(--accent);
+}
+
+.user-profile { display: flex; align-items: center; gap: 1rem; }
+.avatar {
+    width: 50px; height: 50px; background: var(--bg); color: var(--primary);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1.5rem; border: 2px solid var(--accent);
+}
+
+.user-details h2 { margin: 0; font-size: 1.25rem; }
+.user-details span { color: var(--text-muted); font-size: 0.875rem; }
+
+.balance-display { text-align: right; }
+.balance-display label { font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 600; }
+.balance-display h2 { margin: 0; font-size: 2rem; color: var(--danger); font-weight: 800; }
+
+/* Panel de Tabla */
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid var(--bg);
+    padding-bottom: 0.5rem;
+}
+.panel-header h3 { margin: 0; font-size: 1.1rem; }
+.badge { background: var(--bg); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+
+/* Tabla Custom */
+.custom-table { width: 100%; border-collapse: collapse; }
+.custom-table th { text-align: left; padding: 12px; color: var(--text-muted); font-size: 0.85rem; border-bottom: 2px solid var(--bg); }
+.custom-table td { padding: 16px 12px; border-bottom: 1px solid var(--bg); font-size: 0.95rem; }
+
+.text-bold { font-weight: 700; }
+.text-center { text-align: center; }
+
+/* Botones */
+.btn-action {
+    padding: 6px 14px; border-radius: 8px; border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: 0.2s; margin: 2px;
+}
+.btn-action.pay { background: var(--success); color: white; }
+.btn-action.abono { background: var(--primary); color: white; }
+.btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* RESPONSIVO (MÓVIL) */
+@media (max-width: 600px) {
+    .main-header h1 { font-size: 1rem; }
+    .balance-display { width: 100%; text-align: left; background: var(--bg); padding: 1rem; border-radius: 8px; }
+    
+    /* Convertir tabla en tarjetas */
+    .custom-table thead { display: none; }
+    .custom-table tr { 
+        display: block; background: white; border: 1px solid #eee; 
+        margin-bottom: 1rem; border-radius: 8px; padding: 0.5rem;
+    }
+    .custom-table td { 
+        display: flex; justify-content: space-between; align-items: center; 
+        padding: 8px 10px; border: none; text-align: right;
+    }
+    .custom-table td::before { 
+        content: attr(data-label); font-weight: 700; color: var(--text-muted); 
+        font-size: 0.8rem; text-align: left;
+    }
+    .actions-cell { flex-direction: row; justify-content: center !important; gap: 10px; border-top: 1px solid #eee !important; margin-top: 5px; }
+}

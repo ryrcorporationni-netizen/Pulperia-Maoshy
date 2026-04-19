@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pulpería Maoshy - Acceso</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-box">
+            <div class="logo-wrapper">
+                <img src="../Recurso_Imagen/logo.png" alt="Logo Maoshy" class="brand-logo">
+            </div>
+            
+            <h1 id="form-title">Pulpería Maoshy</h1>
+            <p id="form-subtitle">Gestión de Inventario y Deudas</p>
+            
+            <form id="auth-form">
+                <div class="input-group">
+                    <label for="username">Usuario</label>
+                    <input type="text" id="username" placeholder="Nombre de usuario" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-primary">Entrar al Sistema</button>
+            </form>
+
+            <div id="selection-area" class="hidden">
+                <p class="selection-title">Selecciona tipo de registro</p>
+                <div class="cards-container">
+                    <div class="role-card" id="card-cliente">
+                        <div class="card-icon">👤</div>
+                        <span>Cliente</span>
+                        <small>Consultar mis deudas</small>
+                    </div>
+                    <div class="role-card" id="card-admin">
+                        <div class="card-icon">🛡️</div>
+                        <span>Admin</span>
+                        <small>Control total</small>
+                    </div>
+                </div>
+                <button type="button" class="btn-text" onclick="toggleView('LOGIN')">← Volver al inicio</button>
+            </div>
+
+            <div class="switch-area">
+                <p>¿No tienes cuenta? <a href="#" onclick="toggleView('SELECTION')">Regístrate aquí</a></p>
+            </div>
+            <div id="message" class="message"></div>
+        </div>
+    </div>
+
+    <div id="modal-cliente" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModals()">&times;</span>
+            <h2>Registro de Cliente</h2>
+            <form id="form-reg-cliente">
+                <div class="input-group">
+                    <label>Usuario deseado</label>
+                    <input type="text" id="cli-user" placeholder="Ej: juan_perez" required>
+                </div>
+                <div class="input-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="cli-pass" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-primary">Crear Cuenta Cliente</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="modal-admin" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModals()">&times;</span>
+            <h2>Nuevo Administrador</h2>
+            <form id="form-reg-admin">
+                <div class="input-group">
+                    <label>Usuario</label>
+                    <input type="text" id="adm-user" required>
+                </div>
+                <div class="input-group">
+                    <label>Nombre Real</label>
+                    <input type="text" id="adm-name" required>
+                </div>
+                <div class="input-group">
+                    <label>Correo</label>
+                    <input type="email" id="adm-email" required>
+                </div>
+                <div class="input-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="adm-pass" required>
+                </div>
+                <div class="input-group">
+                    <label>Llave Maestra</label>
+                    <input type="password" id="adm-master" placeholder="Clave de seguridad" required>
+                </div>
+                <button type="submit" class="btn-primary">Validar y Crear</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../java/login.js"></script>
+</body>
+</html>
